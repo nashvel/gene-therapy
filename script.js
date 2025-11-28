@@ -27,7 +27,39 @@ async function loadIncludes() {
         });
         AOS.refresh();
         initializeNavigation(); // Re-bind navigation events
+        
+        // Enforce viewport constraints after content loads
+        enforceViewportConstraints();
     }, 100);
+}
+
+// Function to enforce viewport constraints
+function enforceViewportConstraints() {
+    // Ensure no horizontal overflow
+    document.documentElement.style.width = '100%';
+    document.documentElement.style.maxWidth = '100%';
+    document.documentElement.style.overflowX = 'hidden';
+    
+    document.body.style.width = '100%';
+    document.body.style.maxWidth = '100%';
+    document.body.style.overflowX = 'hidden';
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+    
+    // Fix all sections
+    document.querySelectorAll('section').forEach(section => {
+        section.style.width = '100%';
+        section.style.maxWidth = '100%';
+        section.style.overflowX = 'hidden';
+        section.style.margin = '0';
+    });
+    
+    // Fix all containers
+    document.querySelectorAll('.container').forEach(container => {
+        container.style.width = '100%';
+        container.style.maxWidth = '100%';
+        container.style.margin = '0';
+    });
 }
 
 // Wrap existing navigation logic in a function
