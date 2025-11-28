@@ -54,7 +54,7 @@ section {
     position: relative;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .container {
@@ -469,7 +469,7 @@ section:nth-child(even) {
         min-height: auto;
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
+        overflow: hidden;
         margin: 0;
     }
 

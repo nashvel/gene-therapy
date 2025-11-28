@@ -50,7 +50,7 @@ function enforceViewportConstraints() {
     document.querySelectorAll('section').forEach(section => {
         section.style.width = '100%';
         section.style.maxWidth = '100%';
-        section.style.overflowX = 'hidden';
+        section.style.overflow = 'hidden';
         section.style.margin = '0';
     });
     
