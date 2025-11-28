@@ -434,6 +434,13 @@ section:nth-child(even) {
     section {
         padding: 60px 15px;
         min-height: auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    #hero {
+        min-height: 100vh;
+        padding: 60px 15px;
     }
 
     .nav-dots {
@@ -459,6 +466,31 @@ section:nth-child(even) {
     .section-title {
         font-size: 1.8rem;
         margin-bottom: 2rem;
+    }
+
+    .intro-dna-left,
+    .intro-dna-right {
+        width: 80px;
+        height: 80px;
+    }
+
+    .intro-dna-left {
+        top: -30px;
+        left: -30px;
+    }
+
+    .intro-dna-right {
+        bottom: -30px;
+        right: -30px;
+    }
+
+    .intro-yellow-box {
+        padding: 2rem 1.5rem;
+    }
+
+    .intro-title {
+        font-size: 2rem;
+        letter-spacing: 1px;
     }
 }
 
