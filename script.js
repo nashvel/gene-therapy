@@ -50,8 +50,14 @@ function enforceViewportConstraints() {
     document.querySelectorAll('section').forEach(section => {
         section.style.width = '100%';
         section.style.maxWidth = '100%';
-        section.style.overflow = 'hidden';
         section.style.margin = '0';
+        
+        // Keep intro section overflow visible for decorations
+        if (section.id !== 'intro') {
+            section.style.overflow = 'hidden';
+        } else {
+            section.style.overflow = 'visible';
+        }
     });
     
     // Fix all containers
@@ -102,6 +108,16 @@ function initializeNavigation() {
         });
     });
 }
+
+// Hide preloader when page loads
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 1000);
+    }
+});
 
 // Start loading
 document.addEventListener('DOMContentLoaded', loadIncludes);
