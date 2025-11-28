@@ -133,3 +133,51 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+// Horizontal scroll navigation for desktop
+function initializeHorizontalNav() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const sections = document.querySelectorAll('section');
+    let currentIndex = 0;
+
+    if (!prevBtn || !nextBtn) return;
+
+    function scrollToSection(index) {
+        if (index >= 0 && index < sections.length) {
+            currentIndex = index;
+            sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            scrollToSection(currentIndex - 1);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < sections.length - 1) {
+            scrollToSection(currentIndex + 1);
+        }
+    });
+
+    // Update current index on scroll
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth >= 1024) {
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.left >= 0 && rect.left < window.innerWidth / 2) {
+                    currentIndex = index;
+                }
+            });
+        }
+    });
+}
+
+// Initialize horizontal nav after content loads
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        initializeHorizontalNav();
+    }, 500);
+});
