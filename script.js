@@ -179,5 +179,40 @@ function initializeHorizontalNav() {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         initializeHorizontalNav();
+        initializeGeneModal();
     }, 500);
 });
+
+// Gene Modal functionality
+function initializeGeneModal() {
+    const geneText = document.getElementById('geneText');
+    const geneModal = document.getElementById('geneModal');
+    const closeBtn = document.querySelector('.gene-modal-close');
+
+    if (!geneText || !geneModal) return;
+
+    // Open modal when clicking on GENE text
+    geneText.addEventListener('click', (e) => {
+        e.stopPropagation();
+        geneModal.classList.add('show');
+    });
+
+    // Close modal when clicking the X button
+    closeBtn.addEventListener('click', () => {
+        geneModal.classList.remove('show');
+    });
+
+    // Close modal when clicking outside the modal content
+    geneModal.addEventListener('click', (e) => {
+        if (e.target === geneModal) {
+            geneModal.classList.remove('show');
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && geneModal.classList.contains('show')) {
+            geneModal.classList.remove('show');
+        }
+    });
+}
